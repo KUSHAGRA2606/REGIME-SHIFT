@@ -1,0 +1,8 @@
+numpy>=1.23
+pandas>=1.5
+matplotlib>=3.6
+scipy>=1.9
+yfinance>=0.2.40
+hmmlearn>=0.3.3
+cvxpy>=1.4.0
+requests>=2.31
