@@ -15,7 +15,7 @@ class Universe:
 class BacktestConfig:
     start: str = "2006-01-01"
     end: str = "2025-12-31"
-    rebalance: str = "M"  # pandas offset alias
+    rebalance: str = "ME"  # pandas offset alias (month-end)
     train_years: int = 3
     n_states: int = 3
     cost_bps: float = 7.5

@@ -1,0 +1,16 @@
+README.md
+pyproject.toml
+src/regime_shift/__init__.py
+src/regime_shift/backtest.py
+src/regime_shift/config.py
+src/regime_shift/data.py
+src/regime_shift/features.py
+src/regime_shift/hmm_regime.py
+src/regime_shift/metrics.py
+src/regime_shift/optimizer.py
+src/regime_shift/pipeline.py
+src/regime_shift/report.py
+src/regime_shift.egg-info/PKG-INFO
+src/regime_shift.egg-info/SOURCES.txt
+src/regime_shift.egg-info/dependency_links.txt
+src/regime_shift.egg-info/top_level.txt

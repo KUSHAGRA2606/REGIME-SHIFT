@@ -3,6 +3,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Iterable, Optional
 
+import time
+
 import numpy as np
 import pandas as pd
 import requests
@@ -17,14 +19,27 @@ class MarketData:
 
 def fetch_yahoo_prices(tickers: Iterable[str], start: str, end: str) -> pd.DataFrame:
     tickers = list(dict.fromkeys(list(tickers)))
-    px = yf.download(
-        tickers=tickers,
-        start=start,
-        end=end,
-        auto_adjust=True,
-        progress=False,
-        group_by="ticker",
-    )
+
+    last_exc: Exception | None = None
+    px = None
+    for k in range(3):
+        try:
+            px = yf.download(
+                tickers=tickers,
+                start=start,
+                end=end,
+                auto_adjust=True,
+                progress=False,
+                group_by="ticker",
+                threads=False,
+            )
+            break
+        except Exception as e:
+            last_exc = e
+            time.sleep(0.5 * (k + 1))
+
+    if px is None:
+        raise RuntimeError(f"yfinance download failed: {last_exc}")
     if isinstance(px.columns, pd.MultiIndex):
         adj = {}
         for t in tickers:
@@ -38,6 +53,10 @@ def fetch_yahoo_prices(tickers: Iterable[str], start: str, end: str) -> pd.DataF
 
     out = out.dropna(how="all").sort_index()
     out.index = pd.to_datetime(out.index)
+
+    missing = [t for t in tickers if t not in out.columns or out[t].dropna().empty]
+    if missing:
+        raise RuntimeError(f"Missing price series from Yahoo: {missing}")
     return out
 
 

@@ -42,4 +42,4 @@ Open `notebooks/regime_shift.ipynb` and run top-to-bottom.
 ## Notes
 
 - Walk-forward logic uses only data available up to $t-1$ to decide weights for day $t$.
-- Rebalancing is monthly by default.
+- Rebalancing is month-end by default (`rebalance="ME"`); any pandas `date_range` frequency works.
