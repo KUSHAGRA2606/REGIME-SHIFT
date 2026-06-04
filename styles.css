@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --accent: #3b82f6;
+    --border: #334155;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.8;
+}
+
+.container {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+}
+
+header h2 {
+    font-size: 1.5rem;
+    color: var(--accent);
+    font-weight: 400;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    font-size: 1.6rem;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.card h4 {
+    font-size: 1.2rem;
+    color: var(--accent);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+}
+
+ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    color: var(--text-secondary);
+}
+
+li {
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+}
+
+strong {
+    color: var(--text-primary);
+}
+
+.math-block {
+    background-color: #0b1121;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    text-align: center;
+    overflow-x: auto;
+    color: #ffffff;
+}
+
+/* Force MathJax text to be white in dark mode */
+.math-block MathJax {
+    color: #ffffff !important;
+}
+
+.code-flow {
+    background-color: #0b1121;
+    border-left: 4px solid var(--accent);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius: 4px;
+    color: var(--text-secondary);
+}
+
+.code-flow strong {
+    color: var(--accent);
+}
+
+.table-responsive {
+    overflow-x: auto;
+    margin-top: 2rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 1.2rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+th {
+    background-color: #0b1121;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+td {
+    color: var(--text-secondary);
+}
+
+.highlight-col {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+footer {
+    text-align: center;
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-secondary);
+}
