@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REGIME-SHIFT | Macro-Aware Tactical Asset Allocation Engine</title>
-    <link rel="stylesheet" href="styles.css?v=1">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=2">
     
     <!-- MathJax Configuration -->
     <script>
@@ -13,117 +13,133 @@
             tex: {
                 inlineMath: [['$', '$'], ['\\(', '\\)']],
                 displayMath: [['$$', '$$'], ['\\[', '\\]']]
-            },
-            options: {
-                renderActions: {
-                    addMenu: []
-                }
             }
         };
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
-
 <body>
-    <div class="container">
-        <header>
-            <h1>REGIME-SHIFT</h1>
-            <h2>Macro-Aware Tactical Asset Allocation Engine</h2>
-        </header>
+    <div class="background-animation"></div>
 
-        <main>
-            <!-- SECTION 1 -->
-            <section class="card">
-                <h3>1. The Core Problem Statement</h3>
-                <p>Standard quantitative strategies and static portfolios (like the classic 60/40) rely heavily on stationary assumptions, working perfectly during prolonged bull runs but failing catastrophically during structural market breaks. In the institutional Global Macro and Multi-Asset space, a static allocation is a liability. The ability to mathematically detect, quantify, and adapt to unobservable economic regime changes is the absolute core of modern portfolio management.</p>
-                <br>
-                <p>This project bridges the gap between unsupervised machine learning and classical convex portfolio theory. It is a dynamic allocation engine built from scratch that ingests noisy, multi-asset market data, classifies hidden economic states using Hidden Markov Models (HMM), and automatically shifts capital between equities, fixed income, and safe havens.</p>
-                <br>
-                <p>The true challenge of this project isn't just fitting a statistical model to historical data; it is executing that logic without falling victim to look-ahead bias and portfolio thrashing. Standard backtests often hallucinate alpha by acting on data from the future or ignoring the devastating cost of high turnover. By building a rigorous walk-forward validation harness, dynamically mapping optimization objectives to specific regimes, and explicitly penalizing transaction friction, this system is engineered for robust, real-world survival—demonstrating the exact risk-aware mindset that top-tier hedge funds demand from quantitative researchers.</p>
-            </section>
+    <nav class="glass-nav">
+        <div class="logo">REGIME-SHIFT</div>
+        <div>
+            <a href="#overview">Overview</a>
+            <a href="#tech">Tech Stack</a>
+            <a href="#architecture">Architecture</a>
+        </div>
+    </nav>
 
-            <!-- SECTION 2 -->
-            <section class="card">
-                <h3>2. Core Concepts & Tech Stack</h3>
-                <p>The engine leverages a modern quantitative finance stack based on Python, focusing heavily on unsupervised state classification and convex optimization.</p>
-                <br>
-                <h4>Concepts Mastered</h4>
+    <section class="hero">
+        <div class="hero-content slide-up">
+            <div class="badge">Macro-Aware Allocation Engine</div>
+            <h1 class="gradient-text">REGIME-SHIFT</h1>
+            <h2>Bridging unsupervised ML and classical convex portfolio theory</h2>
+            <p class="hero-desc">Standard quantitative strategies rely on stationary assumptions, failing during structural market breaks. We mathematically detect, quantify, and adapt to unobservable economic regime changes.</p>
+            <a href="#overview" class="cta-button">Explore the Engine</a>
+        </div>
+    </section>
+
+    <main class="content-section" id="overview">
+        <div class="text-container slide-up">
+            <h3 class="section-heading">The Core Problem Statement</h3>
+            <p class="lead">In the institutional Global Macro and Multi-Asset space, a static allocation is a liability. This dynamic allocation engine ingests noisy, multi-asset market data, classifies hidden economic states using Hidden Markov Models (HMM), and automatically shifts capital between equities, fixed income, and safe havens.</p>
+            
+            <div class="highlight-box">
+                <h4>The True Challenge</h4>
+                <p>Standard backtests often hallucinate alpha by acting on data from the future or ignoring the devastating cost of high turnover. This system is engineered for robust, real-world survival.</p>
                 <ul>
-                    <li><strong>Hidden Markov Models (HMM) & Viterbi Algorithm:</strong> Used to classify unobservable economic states without manual labels.</li>
-                    <li><strong>Convex Portfolio Optimization:</strong> Efficient frontier allocation using CVXPY.</li>
-                    <li><strong>Walk-Forward Validation:</strong> Strict temporal train/test splits, eliminating look-ahead bias.</li>
-                    <li><strong>Performance Metrics:</strong> Sharpe, Sortino, Calmar Ratios.</li>
-                    <li><strong>Transaction Friction Modeling:</strong> Explicitly penalizing rebalance turnover.</li>
+                    <li>Rigorous walk-forward validation harness</li>
+                    <li>Dynamically mapping optimization objectives to specific regimes</li>
+                    <li>Explicitly penalizing transaction friction</li>
                 </ul>
+            </div>
+        </div>
 
-                <h4>Tech Stack & Data Sources</h4>
-                <ul>
-                    <li><strong>Languages & Libraries:</strong> Python 3.9+, hmmlearn, CVXPY, NumPy, Pandas, Matplotlib, SciPy.</li>
-                    <li><strong>Data Sources:</strong> Yahoo Finance (yfinance) for multi-asset daily returns, FRED API for macro indicators (CPI, yields, spreads), and CBOE VIX historical data.</li>
-                </ul>
-            </section>
-
-            <!-- SECTION 3 -->
-            <section class="card">
-                <h3>3. Project Goals</h3>
-                <ul>
-                    <li><strong>Build an HMM Regime Classifier:</strong> Ingest asset returns, VIX, and macro proxies to detect hidden market states (Bull, Bear, Crisis) without manual labelling.</li>
-                    <br>
-                    <li><strong>Implement Dynamic Constraint Mapping:</strong> Shift optimizer objective functions by regime: Maximum Sharpe in Bull, Minimum Volatility in Crisis.</li>
-                    <br>
-                    <li><strong>Build a Walk-Forward Validation Harness:</strong> Strict temporal train/test splits, re-fitting the HMM only on past data, eliminating look-ahead bias.</li>
-                    <br>
-                    <li><strong>Model Transaction Friction Explicitly:</strong> Apply 5–10 bps turnover penalty per rebalance; show the model survives transaction costs.</li>
-                    <br>
-                    <li><strong>Benchmark Against Static Portfolios:</strong> Compare against 60/40 and equal-weight baselines across Sharpe, max drawdown, and Calmar ratio.</li>
-                </ul>
-            </section>
-
-            <!-- SECTION 4 -->
-            <section class="card">
-                <h3>4. System Architecture & Implementation</h3>
-                <p>The system is cleanly divided into separate modules for data ingestion, regime detection, portfolio optimization, and walk-forward backtesting, simulating a true production environment.</p>
-                
-                <div class="code-flow">
-                    <strong>[Core Pipeline Modules]</strong>
-                    <br><br>
-                    1. <strong><code>src/regime_shift/data.py</code>:</strong> Data ingestion from Yahoo Finance and FRED.<br>
-                    2. <strong><code>src/regime_shift/hmm_regime.py</code>:</strong> HMM fit/inference and regime labeling.<br>
-                    3. <strong><code>src/regime_shift/optimizer.py</code>:</strong> CVXPY allocation objectives and regime constraints.<br>
-                    4. <strong><code>src/regime_shift/backtest.py</code>:</strong> Walk-forward backtest and transaction cost model.<br>
-                    5. <strong><code>src/regime_shift/metrics.py</code>:</strong> Calculation of Sharpe, Sortino, Calmar, max drawdown, and turnover.<br>
-                    6. <strong><code>src/regime_shift/report.py</code>:</strong> Plot generation and tear sheet export.
+        <div class="text-container" id="tech">
+            <h3 class="section-heading">Core Concepts & Tech Stack</h3>
+            
+            <div class="grid-layout">
+                <div class="glass-card">
+                    <h4>Concepts Mastered</h4>
+                    <ul class="professional-list">
+                        <li><strong>Hidden Markov Models (HMM):</strong> Classify unobservable economic states without manual labels.</li>
+                        <li><strong>Convex Portfolio Optimization:</strong> Efficient frontier allocation using CVXPY.</li>
+                        <li><strong>Walk-Forward Validation:</strong> Strict temporal train/test splits.</li>
+                        <li><strong>Performance Metrics:</strong> Sharpe, Sortino, Calmar Ratios.</li>
+                        <li><strong>Transaction Friction:</strong> Explicitly penalizing turnover.</li>
+                    </ul>
                 </div>
-            </section>
-
-            <!-- SECTION 5 -->
-            <section class="card">
-                <h3>5. Deliverables & Outputs</h3>
-                <p>The successful execution of the model results in a comprehensive set of performance and analysis outputs designed for a quantitative research portfolio:</p>
-                <br>
-                <ul>
-                    <li><strong>Trained HMM Model:</strong> Regime labels overlaid on historical price data and documented transition probabilities.</li>
-                    <br>
-                    <li><strong>Dynamic Allocation Backtester:</strong> Rigorous walk-forward validation, annotated regime charts, and equity curve visualizations.</li>
-                    <br>
-                    <li><strong>Performance Tear Sheet:</strong> Detailed metrics analysis vs. static benchmarks.</li>
-                    <br>
-                    <li><strong>Interactive Pipeline:</strong> Jupyter Notebook pipeline covering data ingestion $\rightarrow$ regime detection $\rightarrow$ optimization $\rightarrow$ backtest $\rightarrow$ reporting.</li>
-                </ul>
                 
-                <div class="math-block">
-                    <!-- Example Math to show MathJax is working, related to Sharpe Ratio -->
+                <div class="glass-card">
+                    <h4>Tech Stack & Data</h4>
+                    <p>Leveraging a modern quantitative finance stack based on Python, focusing heavily on unsupervised state classification and convex optimization.</p>
+                    <div class="tech-tags">
+                        <span>Python 3.9+</span>
+                        <span>hmmlearn</span>
+                        <span>CVXPY</span>
+                        <span>NumPy & Pandas</span>
+                        <span>SciPy</span>
+                    </div>
+                    <ul class="professional-list">
+                        <li><strong>Yahoo Finance (yfinance):</strong> Multi-asset daily returns</li>
+                        <li><strong>FRED API:</strong> Macro indicators (CPI, yields, spreads)</li>
+                        <li><strong>CBOE:</strong> VIX historical data</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card full-span">
+                    <h4>Project Goals</h4>
+                    <ul class="professional-list">
+                        <li><strong>Build an HMM Regime Classifier:</strong> Ingest asset returns, VIX, and macro proxies to detect hidden market states.</li>
+                        <li><strong>Implement Dynamic Constraint Mapping:</strong> Shift optimizer objective functions by regime.</li>
+                        <li><strong>Build a Walk-Forward Validation Harness:</strong> Re-fitting the HMM only on past data to eliminate look-ahead bias.</li>
+                        <li><strong>Benchmark Against Static Portfolios:</strong> Compare against 60/40 and equal-weight baselines.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-container" id="architecture">
+            <div class="feature-block">
+                <div class="feature-text">
+                    <h4>System Architecture</h4>
+                    <p>The system is cleanly divided into separate modules for data ingestion, regime detection, portfolio optimization, and walk-forward backtesting, simulating a true production environment.</p>
+                    
+                    <div class="code-flow" style="background: rgba(0,0,0,0.5); padding: 1.5rem; border-radius: 12px; margin-top: 1.5rem; border-left: 4px solid var(--accent-color);">
+                        <code>
+                            <span style="color: var(--accent-color)">1. src/regime_shift/data.py:</span> Data ingestion from Yahoo Finance and FRED.<br><br>
+                            <span style="color: var(--accent-color)">2. src/regime_shift/hmm_regime.py:</span> HMM fit/inference and regime labeling.<br><br>
+                            <span style="color: var(--accent-color)">3. src/regime_shift/optimizer.py:</span> CVXPY allocation objectives and constraints.<br><br>
+                            <span style="color: var(--accent-color)">4. src/regime_shift/backtest.py:</span> Walk-forward backtest and transaction model.<br><br>
+                            <span style="color: var(--accent-color)">5. src/regime_shift/metrics.py:</span> Sharpe, Sortino, Calmar, drawdown, turnover.<br><br>
+                            <span style="color: var(--accent-color)">6. src/regime_shift/report.py:</span> Plot generation and tear sheet export.
+                        </code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <h4>Deliverables & Outputs</h4>
+                <p>A comprehensive set of performance and analysis outputs designed for a quantitative research portfolio:</p>
+                <ul class="professional-list">
+                    <li><strong>Trained HMM Model:</strong> Regime labels overlaid on historical price data.</li>
+                    <li><strong>Dynamic Allocation Backtester:</strong> Annotated regime charts and equity curves.</li>
+                    <li><strong>Performance Tear Sheet:</strong> Detailed metrics analysis vs. static benchmarks.</li>
+                    <li><strong>Interactive Pipeline:</strong> Jupyter Notebook pipeline covering the full workflow.</li>
+                </ul>
+                <div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 12px; margin-top: 2rem; text-align: center;">
                     $$ \text{Sharpe Ratio} = \frac{R_p - R_f}{\sigma_p} $$
                     <br>
-                    $$ \text{Where } R_p \text{ is the portfolio return, } R_f \text{ is the risk-free rate, and } \sigma_p \text{ is the portfolio standard deviation.} $$
+                    <span style="color: var(--text-secondary); font-size: 0.9rem;">Where $R_p$ is portfolio return, $R_f$ is risk-free rate, and $\sigma_p$ is portfolio standard deviation.</span>
                 </div>
-            </section>
-        </main>
+            </div>
+        </div>
+    </main>
 
-        <footer>
-            <p>&copy; 2026 REGIME-SHIFT Project Framework.</p>
-        </footer>
-    </div>
+    <footer>
+        <div class="footer-logo">REGIME-SHIFT</div>
+        <p class="copyright">&copy; 2026 REGIME-SHIFT Project Framework.</p>
+    </footer>
 </body>
-
 </html>
